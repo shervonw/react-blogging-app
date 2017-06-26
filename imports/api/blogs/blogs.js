@@ -49,6 +49,11 @@ Meteor.methods({
     return Blogs.find().fetch()
   },
 
+    // get all blogs
+  getBlog(id) {
+    return Blogs.findOne(id)
+  },
+
 	// insert a new entry
   insertBlog(post) {   
 		if (Blogs.find({ user: post.user, title: post.title }).count() > 0) {
