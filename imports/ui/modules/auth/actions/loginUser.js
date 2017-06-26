@@ -11,11 +11,11 @@ const loginUser = ({email, password}, callback) => {
       dispatch({ type: LOGGING_IN_USER });
       if(error) {
         dispatch({ type: LOGGING_IN_FALIED });
-        throw new Meteor.Error("0", err);
+        throw new Meteor.Error("0", error);
       } else {
         dispatch({ 
           type: LOGGING_IN_SUCCESSFUL, 
-          payload: Accounts.user()
+          payload: Meteor.user()
         });
         callback();
       }

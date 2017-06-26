@@ -77,7 +77,7 @@ Meteor.methods({
 	},
 
   getCurrentUser() {
-    return Meteor.users.find().fetch();
+    return Meteor.user.findOne('vdwhdWjdMoJ4NvFSs');
   }
 });
 

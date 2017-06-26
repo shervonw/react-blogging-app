@@ -7,6 +7,7 @@ import { getAllBlogs } from '../actions';
 class App extends Component {
 
   componentDidMount() {
+    console.log(this.props)
     this.props.getAllBlogs();
   }
 
@@ -20,9 +21,6 @@ class App extends Component {
       <div>
         <div style={{width: '60%', float:'left',}}>
           {blogs}
-        </div>
-        <div style={{width: '40%', float:'left', height: 200, backgroundColor: 'rgba(0,0,0,0.4)', }}>
-          
         </div>
       </div>
     );

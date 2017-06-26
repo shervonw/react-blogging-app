@@ -10,7 +10,7 @@ const initialState = {
   username: '',
   email: '',
   password: '',
-  user: null,
+  user: {}//null,
 };
 
 export default function(state = initialState, action) {

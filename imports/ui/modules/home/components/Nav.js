@@ -25,8 +25,11 @@ class Nav extends Component {
     return (
       <div>
         <Menu pointing secondary size='huge'>
-          <Menu.Item name='home' link={true} active={true} onClick={this.handleItemClick}>
+          <Menu.Item name='home' link={true} active={true}>
             <Link to='/'>Home</Link>
+          </Menu.Item>
+          <Menu.Item name='create' link={true}>
+            <Link to='/create'>Create</Link>
           </Menu.Item>
           <Menu.Menu position='right'>
             <Menu.Item name='login' link={true} onClick={this.handleItemClick}>

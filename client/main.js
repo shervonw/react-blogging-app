@@ -8,6 +8,7 @@ import store from '../imports/store';
 import createBrowserHistory from 'history/createBrowserHistory';
 
 const browserHistory = createBrowserHistory();
+const userId = Meteor.userId()
 
 Meteor.startup(() => {
   render(

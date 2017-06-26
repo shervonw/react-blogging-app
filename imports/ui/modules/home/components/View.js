@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import { getBlog } from '../actions';
+import { Button } from 'semantic-ui-react';
 import moment from 'moment';
 import FontIcon from 'material-ui/FontIcon';
 
@@ -15,7 +16,8 @@ class View extends Component {
 
   render() {
     const {
-      blog
+      blog,
+      user
     } = this.props;
 
     const iconStyles = {
@@ -24,7 +26,16 @@ class View extends Component {
       fontSize: 18
     };
 
+    const _id = this.props.match.params.id;
+
     const dateCreated = (blog.createdAt) ? blog.createdAt.$date : new Date();
+
+    const showEditButton = (user) ? 
+      <Button onClick={() => this.props.history.push(`/post/edit/${_id}`)}>
+        Edit
+      </Button>
+      :
+      <div></div>
 
     return (
       <div>
@@ -42,6 +53,7 @@ class View extends Component {
             <span style={{color: 'rgba(0,0,0,0.4)', fontSize: 13, marginRight: 10,}}> 
               {moment(dateCreated).format("MMMM DD, YYYY")}
             </span>
+            {showEditButton}
           </div>
         </div>
         <div style={{marginTop: 35}}>
@@ -54,7 +66,8 @@ class View extends Component {
 
 
 const mapStateToProps = state => ({
-  blog: state.app.blog
+  blog: state.app.blog,
+  user: state.auth.user,
 });
 
 const mapDispatchToProps = (dispatch) => ({

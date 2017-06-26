@@ -7,7 +7,8 @@ import { App } from '../../ui/modules/home';
 import { Auth } from '../../ui/modules/auth';
 import { 
   Nav, 
-  View 
+  View,
+  Edit
 } from '../../ui/modules/home/components'
 
 
@@ -20,7 +21,9 @@ export const renderRoutes = (history) => (
       <div style={{marginLeft: '5%', marginRight: '5%'}}>
         <Route exact path="/" component={App} />
         <Route path="/login" component={Auth}/>
-        <Route path="/post/:id" component={View}/>
+        <Route path="/post/view/:id" component={View}/>
+        <Route path="/post/edit/:id" component={Edit}/>
+        <Route path="/create" component={Edit}/>
       </div>
     </div>
   </MuiThemeProvider>
