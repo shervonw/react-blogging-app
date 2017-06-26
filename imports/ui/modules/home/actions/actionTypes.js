@@ -1,0 +1,1 @@
+export const GET_ALL_BLOGS = 'home/GET_ALL_BLOGS';
