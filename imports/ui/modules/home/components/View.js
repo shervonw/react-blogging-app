@@ -4,16 +4,13 @@ import { withRouter } from 'react-router';
 import { getBlog } from '../actions';
 import moment from 'moment';
 import FontIcon from 'material-ui/FontIcon';
-import asteroid from '../../../../api/blogs/astroid';
+
 
 class View extends Component {
 
   componentWillMount() {
     const _id = this.props.match.params.id;
     this.props.getBlog(_id);
-
-    asteroid.call('user')
-    .then(result => console.log(result)); 
   }
 
   render() {
@@ -48,7 +45,7 @@ class View extends Component {
           </div>
         </div>
         <div style={{marginTop: 35}}>
-          <p>{blog.description}</p>
+          <p style={{fontSize: 16,}}>{blog.description}</p>
         </div>
       </div>
     )

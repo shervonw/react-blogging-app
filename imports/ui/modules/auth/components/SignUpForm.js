@@ -1,27 +1,36 @@
 import React from 'react';
 import { Grid, Button, Input, Form, Header } from 'semantic-ui-react';
 
-const LoginForm = (props) => ({
+const SignUpForm = (props) => ({
   render() {
 
     const {
+      username,
       email,
       password,
+      usernameTextChange,
       emailTextChange,
       passwordTextChange,
-      loginUser,
+      createUser,
       toggleView
     } = props;
 
     const user = {
+      username: this.username,
       email: this.email,
       password: this.password
     }
 
     return (
       <div>
-        <Header textAlign='center' as='h1' style={{marginBottom: '5%',}}>Log In</Header>
+        <Header textAlign='center' as='h1' style={{marginBottom: '5%',}}>Sign Up</Header>
         <Form>
+          <Form.Field>
+            <Input size='big' type='text' placeholder='username' onChange={(event, data) => {
+              usernameTextChange(data.value);
+              this.username = data.value;
+            }}/>
+          </Form.Field>
           <Form.Field>
             <Input size='big' type='email' placeholder='email' onChange={(event, data) => {
               emailTextChange(data.value);
@@ -34,13 +43,13 @@ const LoginForm = (props) => ({
               this.password = data.value;
             }}/>
           </Form.Field>
-          <Button floated='right' onClick={() => loginUser(user, () => {
-            props.history.push('/');
+          <Button floated='right' onClick={() => createUser(user, () => {
+            console.log("Done")    
           })}>
-            Login
+            Sign Up
           </Button>
           <div> 
-            <a onClick={toggleView}>Sign Up</a>
+            <a onClick={toggleView}>Already have an account? Login</a>
           </div>
         </Form>
       </div>
@@ -48,4 +57,4 @@ const LoginForm = (props) => ({
   }
 });
 
-export default LoginForm;
+export default SignUpForm;

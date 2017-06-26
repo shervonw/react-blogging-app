@@ -13,7 +13,7 @@ Meteor.startup(() => {
   render(
     <Provider store={store}>
       <Router history={browserHistory}>
-        {renderRoutes()}
+        {renderRoutes(browserHistory)}
       </Router>
     </Provider>,
     document.getElementById('app'));

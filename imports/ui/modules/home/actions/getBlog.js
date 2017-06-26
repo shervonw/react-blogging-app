@@ -1,4 +1,4 @@
-import asteroid from '../../../../api/blogs/astroid';
+import asteroid from '../../../../api/blogs/asteroid';
 import {
   GET_BLOG
 } from './actionTypes';

@@ -1,9 +1,9 @@
+import { Meteor } from 'meteor/meteor';
 import { Mongo } from 'meteor/mongo';
 
 // Schema that every new entry will follow
 
 // assign schema to the collection
-// const Schema = 
 
 // create reference to the collection
 Blogs = new Mongo.Collection('Blogs');
@@ -75,6 +75,10 @@ Meteor.methods({
 	removeBlog(id) {
 		Blogs.remove(id);
 	},
+
+  getCurrentUser() {
+    return Meteor.users.find().fetch();
+  }
 });
 
 export default Blogs;

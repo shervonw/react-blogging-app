@@ -13,12 +13,20 @@ const List = (props) => ({
       fontSize: 18
     };
 
+    const description = () => {
+      if (props.description.length > 250) {
+        return props.description.slice(0, 250) + '...';
+      } else {
+        return props.description;
+      }
+    }
+
     return (
       <div style={{marginRight: 8, padding: 15,}}>
         <h2 style={{fontSize: 36, marginTop: 25, marginBottom: 25}}>
           <Link to={{ pathname: `/post/${props._id}` }}>{props.title}</Link>
         </h2>
-        <div style={{height: 30, display: 'flex', alignItems: 'center',}}>
+        <div style={{height: 30, display: 'flex', alignItems: 'center', marginBottom: 10,}}>
           <FontIcon className="material-icons" style={iconStyles}>account_circle</FontIcon>
           <span style={{color: 'rgba(0,0,0,0.4)', fontSize: 13, marginRight: 10,}}> 
             {props.user}
@@ -28,7 +36,7 @@ const List = (props) => ({
             {moment(props.createdAt.$date).format("MMMM DD, YYYY")}
           </span>
         </div>
-        <p>{props.description}</p>
+        <p>{description()}</p>
       </div>
     );
   }
