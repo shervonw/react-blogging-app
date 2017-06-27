@@ -20,10 +20,8 @@ const View = (props) => {
     user
   } = props;
 
-  console.log(props)
-
   const showEditButton = (user) ? 
-    <Button onClick={() => this.props.history.push(`/post/edit/${_id}`)}>
+    <Button onClick={() => props.history.replace(`/post/edit/${blog._id}`)}>
       Edit
     </Button>
   :
@@ -56,7 +54,6 @@ const View = (props) => {
       </div>
     </div>
   )
-  
 }
 
 export default View;

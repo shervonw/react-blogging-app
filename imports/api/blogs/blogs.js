@@ -71,7 +71,7 @@ Meteor.methods({
 		Blogs.remove(id);
 	},
 
-  getCurrentUser() {
+  getCurrentUser(id) {
     return Meteor.user.findOne('vdwhdWjdMoJ4NvFSs');
   }
 });

@@ -30,14 +30,20 @@ class Cud extends Component {
   }
 
   render() {
-    const selectComponent = (this.props.blog && this.props.match.url.indexOf('view') > -1) ? 
-      <View {...this.props} />
-    :
-      <Edit {...this.props} />;
+    const selectComponent = () =>  {
+      if (!this.props.user && this.props.match.url.indexOf('create') > -1) {
+        alert("You need to be logged in to create a new post.");
+        this.props.history.replace('/');
+      } else if (this.props.blog && this.props.match.url.indexOf('view') > -1) {
+        return <View {...this.props} />;
+      } else {
+        return <Edit {...this.props} />;
+      }
+    }
 
     return (
       <div>
-        {selectComponent}
+        {selectComponent()}
       </div>
     );
   }

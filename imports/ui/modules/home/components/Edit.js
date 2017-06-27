@@ -7,6 +7,7 @@ import { TextArea, Input, Form, Button } from 'semantic-ui-react';
 const Edit = (props) => {
 
   const {
+    user,
     blog,
     title,
     history,
@@ -30,7 +31,7 @@ const Edit = (props) => {
 
   const updateOrCreateFn = () => {
     if (props.match.path === '/create') {
-      return createBlog({user: 'shervon', title, description}, (newPostId) => {
+      return createBlog({user: user.username, title, description}, (newPostId) => {
         alert("Post created!"); 
         history.replace(`/post/view/${newPostId}`);
       })
@@ -41,8 +42,6 @@ const Edit = (props) => {
       });
     }
   }
-
-  //console.log(props)
 
   return (
     <div >
