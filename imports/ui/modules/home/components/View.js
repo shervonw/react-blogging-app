@@ -29,7 +29,7 @@ const View = (props) => {
   const dateCreated = (blog && blog.createdAt) ? blog.createdAt.$date : null;
 
   return (
-    <div>
+    <div style={{width: '60%', margin: 'auto',}}>
       <div>
         <h2 style={{fontSize: 36, fontWeight: 400, marginTop: 25, marginBottom: 5}}>
           {blog.title}

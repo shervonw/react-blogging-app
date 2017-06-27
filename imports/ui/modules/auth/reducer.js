@@ -1,6 +1,7 @@
 import {
   GET_CURRENT_USER,
   LOGGING_IN_SUCCESSFUL,
+  LOGGING_OUT_SUCCESSFUL,
   USERNAME_TEXT_CHANGE,
   EMAIL_TEXT_CHANGE, 
   PASSWORD_TEXT_CHANGE 
@@ -18,6 +19,8 @@ export default function(state = initialState, action) {
     case GET_CURRENT_USER:
       return Object.assign({}, state, { user : action.payload});
     case LOGGING_IN_SUCCESSFUL:
+      return Object.assign({}, state, { user : action.payload});
+    case LOGGING_OUT_SUCCESSFUL:
       return Object.assign({}, state, { user : action.payload});
     case USERNAME_TEXT_CHANGE:
       return Object.assign({}, state, { username : action.payload});

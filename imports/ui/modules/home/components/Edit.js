@@ -45,28 +45,25 @@ const Edit = (props) => {
 
   return (
     <div >
-      <div style={{marginTop: 20,}}> 
-        <div>      
-          <Button onClick={() => history.goBack()}>
-            Cancel
-          </Button>
-
-          {showDeleteBtn}
-
-          <Button onClick={() => updateOrCreateFn()}>
-            Save
-          </Button>    
-          
-        </div>       
+      <div style={{marginTop: 20,}}>    
         <Form>
-            <Input size='big' type='text' value={title} style={{width: '100%', marginTop: 20, marginBottom: 20,}} placeholder='Title' onChange={(event, data) => {
-              titleTextChange(data.value);
-            }} />
+          <Input size='big' type='text' value={title} style={{width: '100%', marginTop: 20, marginBottom: 20,}} placeholder='Title' onChange={(event, data) => {
+            titleTextChange(data.value);
+          }} />
 
-            <TextArea placeholder='Description' value={description} rows={15} onChange={(event, data) => {
-              descriptionTextChange(data.value);
-            }}/>
+          <TextArea placeholder='Description' value={description} rows={15} onChange={(event, data) => {
+            descriptionTextChange(data.value);
+          }}/>
           </Form>
+          <div style={{marginTop: 20,}}>      
+            <Button onClick={() => history.goBack()}>
+              Cancel
+            </Button>
+            {showDeleteBtn}
+            <Button onClick={() => updateOrCreateFn()}>
+              Save
+            </Button>    
+          </div>
       </div>
     </div>
   )

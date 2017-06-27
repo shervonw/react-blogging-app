@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid, Button, Input, Form, Header } from 'semantic-ui-react';
+import SweetAlert from 'sweetalert-react';
 
 const SignUpForm = (props) => ({
   render() {
@@ -44,7 +45,7 @@ const SignUpForm = (props) => ({
             }}/>
           </Form.Field>
           <Button floated='right' onClick={() => createUser(user, () => {
-            console.log("Done")    
+            props.history('/'); 
           })}>
             Sign Up
           </Button>
