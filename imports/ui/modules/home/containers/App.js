@@ -7,7 +7,6 @@ import { getAllBlogs } from '../actions';
 class App extends Component {
 
   componentDidMount() {
-    console.log(this.props)
     this.props.getAllBlogs();
   }
 

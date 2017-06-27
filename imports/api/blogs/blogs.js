@@ -56,12 +56,7 @@ Meteor.methods({
 
 	// insert a new entry
   insertBlog(post) {   
-		if (Blogs.find({ user: post.user, title: post.title }).count() > 0) {
-			 throw new Meteor.Error("0", "Title already exists!");
-
-		} else {
-				return Blogs.insert(post);
-		}
+		return Blogs.insert(post);
   },
 
 	// updates an entry

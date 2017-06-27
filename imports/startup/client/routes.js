@@ -3,12 +3,10 @@ import { Route } from 'react-router';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // route components
-import { App } from '../../ui/modules/home';
+import { App, Crud } from '../../ui/modules/home';
 import { Auth } from '../../ui/modules/auth';
 import { 
   Nav, 
-  View,
-  Edit
 } from '../../ui/modules/home/components'
 
 
@@ -21,9 +19,9 @@ export const renderRoutes = (history) => (
       <div style={{marginLeft: '5%', marginRight: '5%'}}>
         <Route exact path="/" component={App} />
         <Route path="/login" component={Auth}/>
-        <Route path="/post/view/:id" component={View}/>
-        <Route path="/post/edit/:id" component={Edit}/>
-        <Route path="/create" component={Edit}/>
+        <Route path="/post/view/:id" component={Crud}/>
+        <Route path="/post/edit/:id" component={Crud}/>
+        <Route path="/create" component={Crud}/>
       </div>
     </div>
   </MuiThemeProvider>

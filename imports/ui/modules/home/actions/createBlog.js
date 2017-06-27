@@ -12,11 +12,17 @@ const createBlog = (post, callback) => {
 
       dispatch({type: CREATE_BLOG_SUCCESSFUL});
 
-      callback(result);
+      if (callback)
+        callback(result);
+        
     })
-    .catch(error => dispatch({
-      type: CREATE_BLOG_FAILED
-    }));
+    .catch(error => {
+      dispatch({
+        type: CREATE_BLOG_FAILED
+      })
+
+      console.log('create blog' ,error)
+    });
     
 }
 
