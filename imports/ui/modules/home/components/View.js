@@ -48,7 +48,7 @@ const View = (props) => {
         </div>
       </div>
       <div style={{marginTop: 35}}>
-        <p style={{fontSize: 16,}}>
+        <p style={{fontSize: 16, whiteSpace: 'pre-line',}}>
           {blog.description}
         </p>
       </div>
