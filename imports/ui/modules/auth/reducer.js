@@ -1,4 +1,5 @@
 import {
+  CREATE_NEW_USER,
   GET_CURRENT_USER,
   LOGGING_IN_SUCCESSFUL,
   LOGGING_OUT_SUCCESSFUL,
@@ -16,6 +17,8 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case CREATE_NEW_USER:
+      return Object.assign({}, state, { user : action.payload});
     case GET_CURRENT_USER:
       return Object.assign({}, state, { user : action.payload});
     case LOGGING_IN_SUCCESSFUL:

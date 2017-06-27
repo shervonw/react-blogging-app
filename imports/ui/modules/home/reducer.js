@@ -3,7 +3,10 @@ import {
   GET_BLOG,
   TITLE_TEXT_CHANGE,
   DESCRIPTION_TEXT_CHANGE,
+  DELETING_BLOG_SUCCESSFUL
 } from './actions/actionTypes'
+
+import filter from 'lodash/filter';
 
 const initialState = {
   blogs: [],
@@ -18,6 +21,9 @@ export default function(state = initialState, action) {
       return Object.assign({}, state, { title: action.payload });
     case DESCRIPTION_TEXT_CHANGE:
       return Object.assign({}, state, { description: action.payload });
+    case DELETING_BLOG_SUCCESSFUL:
+      let newBlogArray =  filter(state.blogs, { _id: action.payload });
+      return Object.assign({}, state, { blogs: newBlogArray });
     case GET_ALL_BLOGS: 
       return Object.assign({}, state, { blogs: action.payload });
     case GET_BLOG:

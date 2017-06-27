@@ -9,17 +9,19 @@ const logoutUser = (callback) => {
   return dispatch =>   
     Meteor.logout((error) => {
       dispatch({ type: LOGGING_OUT_USER });
+      
       if(error) {
         dispatch({ type: LOGGING_OUT_FALIED });
         throw new Meteor.Error("0", err);
       } else {
-        
+
         dispatch({ 
           type: LOGGING_OUT_SUCCESSFUL,
           payload: null
          });
 
-        callback();
+         if (callback)
+          callback();
       }
     })
 }

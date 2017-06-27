@@ -18,7 +18,7 @@ class App extends Component {
 
     return (
       <div>
-        <div style={{width: '60%', float:'left',}}>
+        <div style={{width: '80%', margin: 'auto'}}>
           {blogs}
         </div>
       </div>

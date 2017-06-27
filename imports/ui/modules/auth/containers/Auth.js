@@ -19,11 +19,11 @@ class Auth extends Component {
   }
 
   componentWillMount() {
-    this.props.getCurrentUser((response) => {
-      if (response) {
-         this.props.history.push('/');
-      }
-    });
+    // this.props.getCurrentUser((response) => {
+    //   if (response) {
+    //      this.props.history.push('/');
+    //   }
+    // });
   }
 
   showSignUpScreen(flag) {
@@ -62,7 +62,7 @@ const mapDispatchToProps = (dispatch) => ({
   usernameTextChange: (text) => dispatch(usernameTextChange(text)),
   emailTextChange: (text) => dispatch(emailTextChange(text)),
   passwordTextChange: (text) => dispatch(passwordTextChange(text)),
-  createUser: (email, password, callback) => dispatch(createUser(email, password, callback)),
+  createUser: (user, callback) => dispatch(createUser(user, callback)),
   loginUser: (user, callback) => dispatch(loginUser(user, callback)),
   getCurrentUser: (callback) => dispatch(getCurrentUser(callback)),
 });

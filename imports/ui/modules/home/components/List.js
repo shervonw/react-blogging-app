@@ -24,7 +24,7 @@ const List = (props) => ({
     return (
       <div style={{marginRight: 8, padding: 15,}}>
         <h2 style={{fontSize: 36, marginTop: 25, marginBottom: 25}}>
-          <Link to={{ pathname: `/post/view/${props._id}` }}>{props.title}</Link>
+          <Link style={{cursor: 'pointer'}} to={{ pathname: `/post/view/${props._id}` }}>{props.title}</Link>
         </h2>
         <div style={{height: 30, display: 'flex', alignItems: 'center', marginBottom: 10,}}>
           <FontIcon className="material-icons" style={iconStyles}>account_circle</FontIcon>

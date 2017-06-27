@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Grid, Button, Input, Form, Header } from 'semantic-ui-react';
 import SweetAlert from 'sweetalert-react';
 
-const SignUpForm = (props) => ({
+class SignUpForm extends Component {
+  state = {
+    show: false
+  }
+
+  toggleShow(visisble) {
+    this.setState({show: visisble})
+  }
+
   render() {
 
     const {
@@ -14,7 +22,7 @@ const SignUpForm = (props) => ({
       passwordTextChange,
       createUser,
       toggleView
-    } = props;
+    } = this.props;
 
     const user = {
       username: this.username,
@@ -45,17 +53,27 @@ const SignUpForm = (props) => ({
             }}/>
           </Form.Field>
           <Button floated='right' onClick={() => createUser(user, () => {
-            props.history('/'); 
+            this.toggleShow(!this.state.show);
           })}>
-            Sign Up
+            Sign-up
           </Button>
           <div> 
-            <a onClick={toggleView}>Already have an account? Login</a>
+            <a style={{cursor: 'pointer',}} onClick={toggleView}>Already have an account? Login</a>
           </div>
         </Form>
+
+        <SweetAlert
+          show={this.state.show}
+          title="Welcome!"
+          text="Thank you for signing up! Enjoy"
+          onConfirm={() => {
+            this.toggleShow(!this.state.show);
+            this.props.history.replace('/'); 
+          }}
+        />
       </div>
     );
   }
-});
+};
 
 export default SignUpForm;

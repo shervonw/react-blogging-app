@@ -5,17 +5,13 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // route components
 import { App, Crud } from '../../ui/modules/home';
 import { Auth } from '../../ui/modules/auth';
-import { 
-  Nav, 
-} from '../../ui/modules/home/components'
+import { Nav } from '../../ui/modules/home/components';
 
 
 export const renderRoutes = (history) => (
   <MuiThemeProvider>
     <div>
- 
       <Nav history={history} />
-
       <div style={{marginLeft: '5%', marginRight: '5%'}}>
         <Route exact path="/" component={App} />
         <Route path="/login" component={Auth}/>

@@ -12,7 +12,8 @@ const getCurrentUser = (callback) => {
         payload: result
       });
 
-      callback(result);
+      if (callback)
+        callback(result);
     });
     
 }

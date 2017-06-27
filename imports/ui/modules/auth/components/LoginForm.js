@@ -20,7 +20,7 @@ const LoginForm = (props) => ({
 
     return (
       <div>
-        <Header textAlign='center' as='h1' style={{marginBottom: '5%',}}>Log In</Header>
+        <Header textAlign='center' as='h1' style={{marginBottom: '5%',}}>Ready to Blog?</Header>
         <Form>
           <Form.Field>
             <Input size='big' type='email' placeholder='email' onChange={(event, data) => {
@@ -40,7 +40,7 @@ const LoginForm = (props) => ({
             Login
           </Button>
           <div> 
-            <a onClick={toggleView}>Sign Up</a>
+            <a style={{cursor: 'pointer',}} onClick={toggleView}>Sign-up</a>
           </div>
         </Form>
       </div>
