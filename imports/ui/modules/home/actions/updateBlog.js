@@ -12,11 +12,17 @@ const updateBlog = (post, id, callback) => {
 
       dispatch({type: UPDATING_BLOG_SUCCESSFUL});
 
-      callback(result);
+      if (callback)
+        callback(result);
+        
     })
-    .catch(error => dispatch({
-      type: UPDATING_BLOG_FAILED
-    }));
+    .catch(error => {
+      dispatch({
+        type: UPDATING_BLOG_FAILED
+      })
+
+      console.log(error)
+    });
     
 }
 

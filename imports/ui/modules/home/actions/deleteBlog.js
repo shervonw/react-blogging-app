@@ -11,8 +11,10 @@ const deleteBlog = (id, callback) => {
       dispatch({type: DELETING_BLOG});
 
       dispatch({type: DELETING_BLOG_SUCCESSFUL});
-
-      callback(result);
+      
+      if (callback)
+        callback(result);
+        
     })
     .catch(error => dispatch({
       type: DELETING_BLOG_FAILED

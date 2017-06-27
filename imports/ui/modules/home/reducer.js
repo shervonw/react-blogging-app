@@ -15,13 +15,13 @@ const initialState = {
 export default function(state = initialState, action) {
   switch (action.type) {
     case TITLE_TEXT_CHANGE: 
-      return Object.assign({}, state, { title: action.payload })
+      return Object.assign({}, state, { title: action.payload });
     case DESCRIPTION_TEXT_CHANGE:
-      return Object.assign({}, state, { description: action.payload })
+      return Object.assign({}, state, { description: action.payload });
     case GET_ALL_BLOGS: 
-      return Object.assign({}, state, { blogs: action.payload })
+      return Object.assign({}, state, { blogs: action.payload });
     case GET_BLOG:
-      return Object.assign({}, state, { blog: action.payload })
+      return Object.assign({}, state, { blog: action.payload });
     default:
       return state
   }

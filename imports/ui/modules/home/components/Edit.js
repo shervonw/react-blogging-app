@@ -1,111 +1,76 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
-import moment from 'moment';
-import FontIcon from 'material-ui/FontIcon';
 import { TextArea, Input, Form, Button } from 'semantic-ui-react';
-import { getBlog, updateBlog, deleteBlog, titleTextChange, descriptionTextChange } from '../actions';
+//import { getBlog, updateBlog, deleteBlog, titleTextChange, descriptionTextChange } from '../actions';
 
-class Edit extends Component {
+const Edit = (props) => {
 
-  state = {
-    title: '',
-    description: '',
+  const {
+    user,
+    blog,
+    title,
+    history,
+    description,
+    titleTextChange,
+    descriptionTextChange,
+    updateBlog,
+    createBlog,
+    deleteBlog
+  } = props;
+
+  const showDeleteBtn = (props.match.path !== '/create') ?
+    <Button onClick={() => deleteBlog(blog._id, (result) => {
+      alert("Post deleted!"); 
+      history.replace('/'); 
+    })}>
+      Delete
+    </Button>
+  :
+    null;
+
+  const updateOrCreateFn = () => {
+    if (props.match.path === '/create') {
+      return createBlog({user: user.username, title, description}, (newPostId) => {
+        alert("Post created!"); 
+        history.replace(`/post/view/${newPostId}`);
+      })
+    } else {
+      return updateBlog({title, description}, blog._id, () => {
+        alert("Blog saved");
+        history.goBack()
+      });
+    }
   }
 
-  setTitle(newTitle) {
-    this.setState({title: newTitle})
-  }
+  return (
+    <div >
+      <div style={{marginTop: 20,}}> 
+        <div>      
+          <Button onClick={() => history.goBack()}>
+            Cancel
+          </Button>
 
-  setDescription(newDescription) {
-    this.setState({description: newDescription})
-  }
+          {showDeleteBtn}
 
-  componentWillMount() {
-    const _id = this.props.match.params.id;
-    this.props.getBlog(_id);
-  }
-
-  componentDidMount() {
-    this.setState({
-      title: this.props.blog.title, 
-      description: this.props.blog.description, 
-    });
-  }
-
-  render() {
-    const {
-      blog,
-      titleTextChange,
-      descriptionTextChange,
-      updateBlog,
-      deleteBlog
-    } = this.props;
-
-    const loadButtons = (this.props.match.path === '/create') ?
-      <div>
-        <Button onClick={() => this.props.history.goBack()}>
-          Cancel
-        </Button>
-
-        <Button onClick={() => deleteBlog(blog._id)}>
-          Delete
-        </Button>
-
-        <Button onClick={() => updateBlog({title, description}, blog._id)}>
-          Save
-        </Button> 
-      </div>
-    :
-      <div>
-        <Button onClick={() => this.props.history.goBack()}>
-          Cancel
-        </Button>
-      </div>;
-
-    const iconStyles = {
-      marginRight: 8,
-      padding: 3,
-      fontSize: 18
-    };
-
-    return (
-      <div >
-        <div style={{marginTop: 20,}}> 
+          <Button onClick={() => updateOrCreateFn()}>
+            Save
+          </Button>    
           
-          <div>           
-            {loadButtons}
-          </div>
-          
-          <Form>
-            <Input size='big' type='text' style={{width: '100%', marginTop: 20, marginBottom: 20,}} placeholder='Title' onChange={(event, data) => {
+        </div>       
+        <Form>
+            <Input size='big' type='text' value={title} style={{width: '100%', marginTop: 20, marginBottom: 20,}} placeholder='Title' onChange={(event, data) => {
               titleTextChange(data.value);
-            }}/>
+            }} />
 
-            <TextArea placeholder='Description' rows={15} onChange={(event, data) => {
+            <TextArea placeholder='Description' value={description} rows={15} onChange={(event, data) => {
               descriptionTextChange(data.value);
             }}/>
           </Form>
-        </div>
       </div>
-    )
-  }
+    </div>
+  )
 }
 
 
-const mapStateToProps = state => ({
-  blog: state.app.blog,
-  title: state.app.title,
-  description: state.app.description
-});
-
-const mapDispatchToProps = (dispatch) => ({
-  getBlog: (id) => dispatch(getBlog(id)),
-  updateBlog: (post, id) => dispatch(updateBlog(post, id)),
-  deleteBlog: (id) => dispatch(deleteBlog(id)),
-  titleTextChange: (text) => dispatch(titleTextChange(text)), 
-  descriptionTextChange: (text) => dispatch(descriptionTextChange(text)),
-});
-
-
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Edit));
+export default Edit;
