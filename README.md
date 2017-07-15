@@ -1,1 +1,1 @@
-# weedmaps-coding-challenge
+# react-blogging-app
